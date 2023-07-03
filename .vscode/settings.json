@@ -1,0 +1,14 @@
+{
+	"files.associations": {
+		"get_next_line.h": "c",
+		"limits.h": "c",
+		"bitset": "c",
+		"ratio": "c",
+		"memory": "c",
+		"utility": "c",
+		"chrono": "c",
+		"algorithm": "c",
+		"string": "c",
+		"iosfwd": "c"
+	}
+}
