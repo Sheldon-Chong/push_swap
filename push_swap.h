@@ -6,13 +6,13 @@
 /*   By: shechong <shechong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:08:22 by shechong          #+#    #+#             */
-/*   Updated: 2023/07/03 17:56:04 by shechong         ###   ########.fr       */
+/*   Updated: 2023/07/03 18:02:04 by shechong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include "./libft2/libft.h"
+# include "./libft/libft.h"
 # include <limits.h>
 
 typedef struct s_stack
