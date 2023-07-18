@@ -6,7 +6,7 @@
 /*   By: shechong <shechong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:08:18 by shechong          #+#    #+#             */
-/*   Updated: 2023/07/03 11:05:10 by shechong         ###   ########.fr       */
+/*   Updated: 2023/07/18 12:22:18 by shechong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_list
 void			ft_bzero(void *s, size_t n);
 void			*ft_calloc(size_t count, size_t size);
 char			*ft_strdup(const char *s1);
+void			*free_and_return(void *ptr, void *ret);
 
 int				ft_isalnum(int c);
 int				ft_isalpha(int c);

@@ -6,7 +6,7 @@
 /*   By: shechong <shechong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 11:06:52 by shechong          #+#    #+#             */
-/*   Updated: 2023/07/03 11:08:46 by shechong         ###   ########.fr       */
+/*   Updated: 2023/07/07 10:59:19 by shechong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,9 @@ void	rot_rev(t_stack **a, t_stack **b, char *str)
 
 	if (ft_strncmp(str, "rrb", 3) == 0)
 		a = b;
-	last = last_node(a);
 	if (!(*a && (*a)->next))
 		return ;
+	last = last_node(a);
 	current = *a;
 	while (current->next->next != NULL)
 		current = current->next;

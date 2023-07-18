@@ -9,6 +9,19 @@
 		"chrono": "c",
 		"algorithm": "c",
 		"string": "c",
-		"iosfwd": "c"
+		"iosfwd": "c",
+		"__bit_reference": "c",
+		"__functional_base": "c",
+		"__node_handle": "c",
+		"__memory": "c",
+		"functional": "c",
+		"iterator": "c",
+		"limits": "c",
+		"optional": "c",
+		"system_error": "c",
+		"tuple": "c",
+		"type_traits": "c",
+		"vector": "c",
+		"libft.h": "c"
 	}
 }

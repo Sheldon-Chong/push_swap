@@ -6,18 +6,12 @@
 /*   By: shechong <shechong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:05:23 by shechong          #+#    #+#             */
-/*   Updated: 2023/07/03 11:09:25 by shechong         ###   ########.fr       */
+/*   Updated: 2023/07/18 13:38:43 by shechong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
-
-void	*free_and_return(void *ptr, void *ret)
-{
-	free(ptr);
-	return (ret);
-}
 
 int	checks(int ac, char **av)
 {
@@ -48,6 +42,14 @@ int	checks(int ac, char **av)
 	return (ft_free_array((void **)av, 0, 0 - set));
 }
 
+t_stack	*node_init(t_stack *node, int index, int number, t_stack *next)
+{
+	node->next = next;
+	node->num = number;
+	node->index = index;
+	return (node);
+}
+
 t_stack	*arg_to_stack(int ac, char **av)
 {
 	int		i;
@@ -57,8 +59,7 @@ t_stack	*arg_to_stack(int ac, char **av)
 	head = (t_stack *)malloc(sizeof(t_stack));
 	if (!head || ac < 1)
 		return (free_and_return(head, NULL));
-	head->next = NULL;
-	head->num = ft_atoi(av[1]);
+	node_init(head, 0, ft_atoi(av[1]), NULL);
 	i = 2;
 	while (av[i])
 	{
@@ -70,6 +71,7 @@ t_stack	*arg_to_stack(int ac, char **av)
 		}
 		node1->next = 0;
 		node1->num = ft_atoi(av[i]);
+		node1->index = 0;
 		add_node_back(&head, node1);
 		i++;
 	}
@@ -85,8 +87,7 @@ t_stack	*string_to_stack(char *str)
 
 	head = ft_calloc(1, sizeof(t_stack));
 	list = ft_split(str, ' ');
-	head->next = NULL;
-	head->num = ft_atoi(list[0]);
+	node_init(head, 0, ft_atoi(list[0]), NULL);
 	i = 0;
 	while (list[++i])
 	{
@@ -98,27 +99,38 @@ t_stack	*string_to_stack(char *str)
 		}
 		node1->next = NULL;
 		node1->num = ft_atoi(list[i]);
+		node1->index = 0;
 		add_node_back(&head, node1);
 	}
 	ft_free_array((void **)list, 1, 1);
 	return (head);
 }
 
-int	assignindex(t_stack **stack)
+void	assign_index(t_stack *stack_a, int stack_size)
 {
-	t_stack	*current;
-	int		minimum;
-	int		index;
+	t_stack	*ptr;
+	t_stack	*highest;
+	int		value;
 
-	minimum = -2147483647;
-	index = 1;
-	current = *stack;
-	while (current)
+	while (--stack_size > 0)
 	{
-		findsmall(stack, minimum)->index = index;
-		minimum = findsmall(stack, minimum)->num;
-		index ++;
-		current = current->next;
+		ptr = stack_a;
+		value = INT_MIN;
+		highest = NULL;
+		while (ptr)
+		{
+			if (ptr->num == INT_MIN && ptr->index == 0)
+				ptr->index = 1;
+			if (ptr->num > value && ptr->index == 0)
+			{
+				value = ptr->num;
+				highest = ptr;
+				ptr = stack_a;
+			}
+			else
+				ptr = ptr->next;
+		}
+		if (highest != NULL)
+			highest->index = stack_size;
 	}
-	return (0);
 }

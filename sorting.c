@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shechong <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: shechong <shechong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 11:07:05 by shechong          #+#    #+#             */
-/*   Updated: 2023/07/03 11:07:06 by shechong         ###   ########.fr       */
+/*   Updated: 2023/07/18 12:40:29 by shechong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,76 +59,59 @@ t_stack	**sort3(t_stack **a, t_stack **b)
 {
 	t_stack	*n3;
 
-	if (list_size(*a) == 2 && ((*a)->index > (*a)->next->index))
-	{
-		rot(a, b, "ra");
-		return (a);
-	}
 	n3 = (*a)->next->next;
-	if ((*a)->index == 3 && (*a)->next->index == 2 && n3->index == 1)
+	if ((*a)->index == 2 && (*a)->next->index == 1 && n3->index == 0)
 	{
 		swap_top(a, b, "sa");
 		rot_rev(a, b, "rra");
 	}
-	if ((*a)->index == 2 && (*a)->next->index == 1 && n3->index == 3)
+	if ((*a)->index == 1 && (*a)->next->index == 0 && n3->index == 2)
 		swap_top(a, b, "sa");
-	if ((*a)->index == 3 && (*a)->next->index == 1 && n3->index == 2)
+	if ((*a)->index == 2 && (*a)->next->index == 0 && n3->index == 1)
 		rot(a, b, "ra");
-	if ((*a)->index == 1 && (*a)->next->index == 3 && n3->index == 2)
+	if ((*a)->index == 0 && (*a)->next->index == 2 && n3->index == 1)
 	{
 		swap_top(a, b, "sa");
 		rot(a, b, "ra");
 	}
-	if ((*a)->index == 2 && (*a)->next->index == 3 && n3->index == 1)
+	if ((*a)->index == 1 && (*a)->next->index == 2 && n3->index == 0)
 		rot_rev(a, b, "rra");
 	return (a);
 }
 
-void	sort5(t_stack **a, t_stack **b, int list_size)
+void	sort4(t_stack **a, t_stack **b, int lst_size)
 {
-	if (list_size == 4)
+	if (lst_size == 4)
 	{
-		rotate_until(a, b, 4);
+		rotate_until(a, b, 3);
 		push(a, b, "pb");
 		sort3(a, b);
 		push(b, a, "pa");
 		rot(a, b, "ra");
 	}
-	if (list_size == 5)
-	{
-		rotate_until(a, b, 5);
-		push(a, b, "pb");
-		rotate_until(a, b, 4);
-		push(a, b, "pb");
-		sort3(a, b);
-		push(a, b, "pa");
-		rot(a, b, "ra");
-		push(a, b, "pa");
-		rot(a, b, "ra");
-	}
 }
 
-void	sort(t_stack **a, t_stack **b, int list_size)
+void	sort5(t_stack **a, t_stack **b)
 {
-	int	i;
-
-	if (list_size == 1)
-		exit(0);
-	if (list_size <= 3)
-		sort3(a, b);
-	else if (list_size <= 5)
-		sort5(a, b, list_size);
-	else if (list_size < 40)
+	if ((*a)->next->next->index == 4 && (*a)->index == 3)
 	{
-		i = 0;
-		while (++i < list_size)
-		{
-			rotate_until(a, b, i);
-			push(a, b, "pb");
-		}
-		while (*b)
-			push(a, b, "pa");
+		push(a, b, "pb");
+		rot(a, b, "ra");
+		push(a, b, "pb");
 	}
 	else
-		radix1(a, b);
+	{
+		rotate_until(a, b, 4);
+		push(a, b, "pb");
+		rotate_until(a, b, 3);
+		push(a, b, "pb");
+	}
+	sort3(a, b);
+	if ((*b)->index == 4)
+		swap_top(a, b, "sb");
+	push(a, b, "pa");
+	rot(a, b, "ra");
+	push(a, b, "pa");
+	rot(a, b, "rra");
+	rot(a, b, "ra");
 }

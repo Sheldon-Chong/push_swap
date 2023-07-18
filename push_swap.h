@@ -6,7 +6,7 @@
 /*   By: shechong <shechong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:08:22 by shechong          #+#    #+#             */
-/*   Updated: 2023/07/03 18:02:04 by shechong         ###   ########.fr       */
+/*   Updated: 2023/07/07 20:06:23 by shechong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,6 @@ void	rot(t_stack **a, t_stack **b, char *str);
 void	rot_rev(t_stack **a, t_stack **b, char *str);
 int		rotate_until(t_stack **stack, t_stack **stack_b, int index);
 
-//debug.c
-void	print_list(t_stack **lst, char *title);
-size_t	printlist_double(t_stack **lst, t_stack **lst2);
-
 //node utils
 void	add_node_back(t_stack **lst, t_stack *new_node);
 int		list_size(t_stack *lst);
@@ -42,13 +38,18 @@ int		check_sorted(t_stack *head);
 
 //parsing
 t_stack	*arg_to_stack(int ac, char **av);
-int		assignindex(t_stack **stack);
 t_stack	*findsmall(t_stack **stack, int minimum);
 t_stack	*string_to_stack(char *str);
 int		checks(int ac, char **av);
 
 // sorts
+void	assign_index(t_stack *stack_a, int stack_size);
 t_stack	**sort3(t_stack **a, t_stack **b);
+void	sort4(t_stack **a, t_stack **b, int lst_size);
+
 void	sort(t_stack **a, t_stack **b, int list_size);
+void	sort5(t_stack **a, t_stack **b);
+t_stack	**radix1(t_stack **a, t_stack **b);
+void	radix2(t_stack **a, t_stack **b, int *bit_index);
 
 #endif

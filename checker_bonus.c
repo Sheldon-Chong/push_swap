@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shechong <shechong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:04:58 by shechong          #+#    #+#             */
-/*   Updated: 2023/06/23 20:06:10 by shechong         ###   ########.fr       */
+/*   Updated: 2023/07/07 19:37:13 by shechong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 int	command(t_stack **a, t_stack **b, char *line)
 {
-	if (!ft_strncmp(line, "sa", 2))
+	if (!ft_strncmp(line, "sa", 2) && ft_strlen(line) == 3)
 		swap_top(a, b, "sa#");
-	else if (!ft_strncmp(line, "sb", 2))
+	else if (!ft_strncmp(line, "sb", 2) && ft_strlen(line) == 3)
 		swap_top(a, b, "sb#");
-	else if (!ft_strncmp(line, "ra", 2))
+	else if (!ft_strncmp(line, "ra", 2) && ft_strlen(line) == 3)
 		rot(a, b, "ra#");
-	else if (!ft_strncmp(line, "rb", 2))
+	else if (!ft_strncmp(line, "rb", 2) && ft_strlen(line) == 3)
 		rot(a, b, "rb#");
-	else if (!ft_strncmp(line, "rra", 3))
+	else if (!ft_strncmp(line, "rra", 3) && ft_strlen(line) == 4)
 		rot_rev(a, b, "rra#");
-	else if (!ft_strncmp(line, "rrb", 3))
+	else if (!ft_strncmp(line, "rrb", 3) && ft_strlen(line) == 4)
 		rot_rev(a, b, "rrb#");
-	else if (!ft_strncmp(line, "ss", 2))
+	else if (!ft_strncmp(line, "ss", 2) && ft_strlen(line) == 3)
 		swap_top(a, b, "ss#");
-	else if (!ft_strncmp(line, "rr", 2))
+	else if (!ft_strncmp(line, "rr", 2) && ft_strlen(line) == 3)
 		rot(a, b, "rr#");
-	else if (!ft_strncmp(line, "rrr", 3))
+	else if (!ft_strncmp(line, "rrr", 3) && ft_strlen(line) == 4)
 		rot_rev(a, b, "rrr#");
-	else if (!ft_strncmp(line, "pa", 2))
+	else if (!ft_strncmp(line, "pa", 2) && ft_strlen(line) == 3)
 		push(a, b, "pa#");
-	else if (!ft_strncmp(line, "pb", 2))
+	else if (!ft_strncmp(line, "pb", 2) && ft_strlen(line) == 3)
 		push(a, b, "pb#");
 	else
 		return (0);
@@ -52,7 +52,7 @@ int	read_lines(t_stack **stack_a, t_stack **stack_b)
 		{
 			free(line);
 			ft_putstr_fd("Error\n", 2);
-			return (0);
+			exit (0);
 		}
 		free(line);
 		line = get_next_line(0);
