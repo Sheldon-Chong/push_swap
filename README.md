@@ -166,3 +166,5 @@ Additionally, for the bonus section of this project, I had to create a tester pr
 ## My experience with this project
 
 For my sorting algorithm, I utilized radix sort, which is a relatively straightforward algorithm, yet is very effective at sorting a large set of numbers. 
+
+Radix sort is typically conducted using base-10 numbers (0-9). However, for the case of radix sorting using 2 stacks, it meant I had only 2 buckets to sift between numbers. Hence, what I regard as the main challenge was brushing up on my knowledge of binary and binary operators for manipulation and comparisons, and adapting this approach to radix sort. Essentially, it was a matter of converting base10 to base2.
